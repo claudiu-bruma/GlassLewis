@@ -6,7 +6,7 @@ namespace CompanyServices
 {
     public interface ICompanyService
     {
-        void Add(CompanyDto newCompany);
+        int Add(CompanyDto newCompany);
         CompanyDto GetCompanyById(int id);
         CompanyDto GetCompanyByIsin(string Isin);
         IEnumerable<CompanyDto> GetCompanies();

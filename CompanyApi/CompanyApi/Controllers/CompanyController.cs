@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CompanyData;
 using CompanyData.Entities;
+using CompanyServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,43 +15,62 @@ namespace CompanyApi.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        public CompanyDbContext CompanyDbContext { get; set; }
-        public CompanyController(CompanyDbContext context)
+        ICompanyService companyService;
+        IMapper mapper;
+        public CompanyController(ICompanyService companyService, IMapper mapper)
         {
-            CompanyDbContext = context;
+            this.companyService = companyService;
+            this.mapper = mapper;
         }
         // GET: api/Company
         [HttpGet]
-        public IEnumerable<Company> Get()
+        public IEnumerable<CompanyDto> Get()
         {
-            return CompanyDbContext.Companies.ToList();
-
-            //return new string[] { "value1", "value2" };
+            return companyService.GetCompanies();
         }
 
         // GET: api/Company/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public ActionResult<CompanyDto> Get(int id)
         {
-            return "value";
+            try
+            {
+                return companyService.GetCompanyById(id);
+            }
+            catch (ArgumentException aex)
+            {
+                return NotFound(aex.Message);
+            }
+
         }
 
+        [HttpGet("{id}", Name = "Get")]
+        public ActionResult<CompanyDto> Get(string isin)
+        {
+            try
+            {
+                return companyService.GetCompanyByIsin(isin);
+            }
+            catch (ArgumentException aex)
+            {
+                return NotFound(aex.Message);
+            }
+        }
         // POST: api/Company
         [HttpPost]
-        public void Post([FromBody] string value)
+        public int Post([FromBody] CompanyDto company)
         {
+
+            return companyService.Add(company);
         }
 
-        // PUT: api/Company/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // PUT: api/Company 
+        [HttpPut]
+        public void Put([FromBody]  CompanyDto company)
         {
+            companyService.Update(company);
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+
     }
 }

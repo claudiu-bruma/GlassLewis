@@ -14,7 +14,7 @@ namespace CompanyData.Infrastructure
         void Delete(TEntity entity);
         void RefreshEntity(TEntity entity);
         TEntity GetById(int id);
-
+        IQueryable<TEntity> Query();
         IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> where);
         int Count();
         int Count(Expression<Func<TEntity, bool>> where);

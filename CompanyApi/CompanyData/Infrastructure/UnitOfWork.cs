@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CompanyData.Infrastructure
 {
-    public class UnitOfWork
+    public class UnitOfWork:IUnitOfWork
     {
         private readonly CompanyDbContext context;
 

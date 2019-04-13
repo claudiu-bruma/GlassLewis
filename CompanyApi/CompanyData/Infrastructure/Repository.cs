@@ -24,8 +24,8 @@ namespace CompanyData.Infrastructure
 
         public virtual void Update(TEntity entity)
         {
-            dataContext.Set<TEntity>().Attach(entity);
-            dataContext.Entry(entity).State = EntityState.Modified;
+            dataContext.Set<TEntity>().Update(entity);
+          //  dataContext.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual void Delete(TEntity entity)
