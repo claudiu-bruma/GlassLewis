@@ -24,28 +24,15 @@ namespace CompanyData.Infrastructure
 
         public virtual void Update(TEntity entity)
         {
-            dataContext.Set<TEntity>().Update(entity);
-          //  dataContext.Entry(entity).State = EntityState.Modified;
+            dataContext.Set<TEntity>().Update(entity);         
         }
 
-        public virtual void Delete(TEntity entity)
-        {
-            dataContext.Set<TEntity>().Remove(entity);
-        }
 
-        public virtual TEntity GetById(int id)
-        {
-            return dataContext.Set<TEntity>().Find(id);
-        }
+
 
         public IQueryable<TEntity> Query( )
         {
             return dataContext.Set<TEntity>();
-        }
-
-        public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> where )
-        {
-            return Query().Where(where);
         }
 
         public int Count()
@@ -58,14 +45,7 @@ namespace CompanyData.Infrastructure
             return dataContext.Set<TEntity>().Count(where);
         }
 
-        public List<TEntity> GetMany(Expression<Func<TEntity, bool>> where)
-        {
-            return dataContext.Set<TEntity>().Where(where).ToList();
-        }
 
-        public void RefreshEntity(TEntity entity)
-        {
-            dataContext.Entry<TEntity>(entity).Reload();
-        }
+
     }
 }

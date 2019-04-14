@@ -61,11 +61,7 @@ namespace CompanyApi
             app.UseMvc();
         }
         public  void AddDependencyInjection(  IServiceCollection services)
-        {
-            //services.AddHash();
-            //services.AddLogger(configuration);
-            //services.AddJsonWebToken(Guid.NewGuid().ToString(), TimeSpan.FromHours(12));
-
+        { 
             RegisterDAL(services);
             RegisterServices(services);
 

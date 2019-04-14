@@ -11,8 +11,7 @@ public class GlobalSetup
         // Executes once before the test run. (Optional)
         AutoMapper.Mapper.Initialize(config =>
         {
-            config.CreateMap<Company, CompanyDto>();
-            config.CreateMap<CompanyDto, Company>();
+            config.CreateMap<Company, CompanyDto>();          
         }
   );
     }

@@ -11,7 +11,7 @@ namespace CompanyApi
         {
             // Add as many of these lines as you need to map your objects
             CreateMap<CompanyData.Entities.Company, CompanyServices.CompanyDto>();
-            CreateMap<CompanyServices.CompanyDto,CompanyData.Entities.Company  >();
+       
 
         }
     }

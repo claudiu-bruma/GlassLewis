@@ -11,13 +11,9 @@ namespace CompanyData.Infrastructure
     {
         void Add(TEntity entity);
         void Update(TEntity entity);
-        void Delete(TEntity entity);
-        void RefreshEntity(TEntity entity);
-        TEntity GetById(int id);
-        IQueryable<TEntity> Query();
-        IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> where);
+        IQueryable<TEntity> Query();     
         int Count();
         int Count(Expression<Func<TEntity, bool>> where);
-        List<TEntity> GetMany(Expression<Func<TEntity, bool>> where);
+     
     }
 }

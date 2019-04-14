@@ -217,31 +217,8 @@ namespace CompanyServiceTests
             companyList.FirstOrDefault(x => x.Id == companyDto.Id).ISIN.Should().Be(companyDto.Isin);
         }
 
-     //   [Test]
-     //   public void Update_CompanyExists_InvalidFieldsNotSaved()
-     //   {
-     //       // Arrange
-     //       var unitUnderTest = this.CreateService();
-     //       CompanyDto companyDto = new CompanyDto()
-     //       {
-     //           Exchange = "aaaaa",
-     //           Isin = "U123123",
-     //           Website = "www.coconut.com",
-     //           Name = "addedCompany",
-     //           StockTicker = "stkT",
-     //           Id = 1
-
-     //       };
-
-     //       // Act
-
-     //       unitUnderTest.Invoking(y => y.Update(
-     //companyDto)).Should().Throw<ArgumentException>();
-
-     //       // Assert
-     //       companyList.FirstOrDefault(x => x.Id == companyDto.Id).ISIN.Should().NotBe(companyDto.Isin);
-     //   }
+  
     }
 }
-// A SetUpFixture outside of any namespace provides SetUp and TearDown for the entire assembly.
+
 
